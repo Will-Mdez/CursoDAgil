@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--/*************************************/-->
+<!--/*********** Equipo 2 ****************/-->
+<!--/* Guerrero HernÃ¡ndez Samuel Antonio */-->
+<!--/************** 3/06/22 **************/-->
+<!--/*************************************/-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:composition
+    template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml"
+  >
+    <!-- Se define la seccion a sustituir del layout -->
+    <ui:define name="content">
+      <div class="container">
+        <div class="col-md-12">
+          <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            <!-- tiene el prefijo p, esto quiere decir que se estï¿½ usando primefaces -->
+
+            <p:dataTable
+              id="tablaGanancia"
+              widgetVar="dtGanancia"
+              var="gan"
+              value="#{gananciaTBean.getListaGanancia()}"
+              editable="true"
+              paginator="true"
+              rows="10"
+              paginatorTemplate="{RowsPerPageDropdown}
+ {FirstPageLink} {PreviousPageLink}
+  {CurrentPageReport} {NextPageLink} {LastPageLink}"
+              rowsPerPageTemplate="5,10,15"
+              emptyMessage="No se encontraron datos"
+            >
+              <f:facet name="header"> Tabla de Ganancias </f:facet>
+
+              <p:columnGroup type="header">
+                <p:row>
+                  <p:column rowspan="1" colspan="1" headerText="Id" />
+
+                  <p:column
+                    rowspan="1"
+                    colspan="4"
+                    headerText="Id Venta"
+                    style="text-align: center"
+                    filterBy="#{gan.ventaId}"
+                    filterStyle="width:150px; height:30px;"
+                    filterMatchMode="contains"
+                  />
+                  <p:column
+                    rowspan="1"
+                    colspan="4"
+                    headerText="Total ganancia"
+                    style="text-align: center"
+                    filterBy="#{gan.totalGanancia}"
+                    filterStyle="width:100px; height:30px;"
+                    filterMatchMode="contains"
+                  />
+                  <p:column
+                    rowspan="1"
+                    colspan="4"
+                    headerText="Fecha"
+                    style="text-align: center"
+                    filterBy="#{gan.fecha}"
+                    filterStyle="width:90px; height:30px;"
+                    filterMatchMode="contains"
+                  />
+
+                </p:row>
+              </p:columnGroup>
+
+              <p:column headerText="Id " colspan="2" style="text-align: center">
+                <h:outputText value="#{gan.idGanancia}" />
+              </p:column>
+
+              <p:column
+                headerText="Id Venta"
+                colspan="4"
+                style="text-align: center"
+              >
+                <p:cellEditor>
+                  <f:facet name="output">
+                    <h:outputText value="#{gan.ventaId}" />
+                  </f:facet>
+                  <f:facet name="input">
+                    <h:inputText
+                      value="#{gan.ventaId}"
+                      style="width: 100%"
+                      label="Id Venta"
+                    />
+                  </f:facet>
+                </p:cellEditor>
+              </p:column>
+
+              <p:column headerText="Total Ganancia" colspan="3">
+                <p:cellEditor>
+                  <f:facet name="output">
+                    <h:outputText value="#{gan.totalGanancia}" />
+                  </f:facet>
+                  <f:facet name="input">
+                    <h:inputText
+                      value="#{gan.totalGanancia}"
+                      style="width: 100%"
+                      label="Total Ganancia"
+                    />
+                  </f:facet>
+                </p:cellEditor>
+              </p:column>
+
+              <p:column headerText="Fecha" colspan="4">
+                <p:cellEditor>
+                  <f:facet name="output">
+                    <h:outputText value="#{gan.fecha}" />
+                  </f:facet>
+                  <f:facet name="input">
+                    <h:inputText
+                      value="#{gan.fecha}"
+                      style="width: 100%"
+                      label="Fecha"
+                    />
+                  </f:facet>
+                </p:cellEditor>
+              </p:column>
+
+
+              <f:facet name="footer">
+                <p:commandButton
+                  value="Nuevo"
+                  onclick="PF('dialogCliente').show();"
+                />
+              </f:facet>
+            </p:dataTable>
+          </h:form>
+
+
+          <!-- dialogo de registro -->
+          <p:dialog
+            id="dialogCliente"
+            widgetVar="dialogCliente"
+            modal="true"
+            resizable="false"
+            header="Nueva Ganancia"
+            width="55%"
+          >
+            <div class="row">
+              <h:form role="form" id="formRegGanancia">
+                <h:panelGrid columns="3" cellpadding="5">
+                  <p:outputLabel value="Venta ID: *" />
+                  <p:inputText
+                    id="VentaId"
+                    style="width: 325px"
+                    value="#{gananciaTBean.ganancia.ventaId}"
+                    styleClass="form-control"
+                    required="true"
+                    requiredMessage="Campo requerido"
+                    validatorMessage="Ingrese un número"
+                  >
+                  </p:inputText>
+                  <p:message for="VentaId" />
+
+                  <p:outputLabel value="Total ganancia: *" />
+                  <p:inputText
+                    id="TotalGanancia"
+                    style="width: 325px"
+                    value="#{gananciaTBean.ganancia.totalGanancia}"
+                    styleClass="form-control"
+                    required="true"
+                    requiredMessage="Campo requerido"
+                    validatorMessage="Ingrese entre 8-80 caracteres"
+                  >
+                    <f:validateLength minimum="1" maximum="80" />
+                  </p:inputText>
+                  <p:message for="TotalGanancia" />
+
+                  <p:outputLabel value="Fecha: *" />
+                  <p:inputText
+                    id="Fecha"
+                    style="width: 325px"
+                    value="#{gananciaTBean.ganancia.fecha}"
+                    styleClass="form-control"
+                    required="true"
+                    requiredMessage="Campo requerido"
+                    validatorMessage="Ingrese un texto"
+                  >
+
+                  </p:inputText>
+                  <p:message for="Fecha" />
+                </h:panelGrid>
+                <p:commandButton
+                  id="btnRegistro"
+                  value="Registrar"
+                  actionListener="#{gananciaTBean.registrar}"
+                  update=":form:tablaGanancia, :dialogCliente, :form:msgs"
+                  oncomplete="PF('dialogCliente').show()"
+                  process="@form"
+                />
+              </h:form>
+            </div>
+          </p:dialog>
+        </div>
+      </div>
+
+      <div class="container">
+        <br />
+      </div>
+    </ui:define>
+  </ui:composition>
+</html>

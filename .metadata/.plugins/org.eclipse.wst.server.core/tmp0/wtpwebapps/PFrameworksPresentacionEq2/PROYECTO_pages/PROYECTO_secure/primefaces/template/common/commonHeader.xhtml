@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<body>
+    <input type="submit" id="submitBtn"/>
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", myFunction);
+      function myFunction() {
+        window.location.href="http://programminghead.com";
+      }
+    </script>
+
+</body>
+
+  <ui:composition>
+    <center>
+      <div class="container">
+        <div class="page-header">
+          <h4 class="header-title">Componentes Primefaces</h4>
+        </div>
+		<div class="social-media">
+			<div class="item-header">
+				<img src="./images/logo-facebook.png"/>
+				<p>CursoDAgil</p>
+			</div>
+			
+			<div class="item-header">
+				<img src="./images/logo-instagram.png"/>
+				<p>@cursodagil</p>
+			</div>
+			
+			<div class="item-header">
+				<img src="./images/logo-whatsapp.png"/>
+				<p>953-235-47-85</p>
+			</div>
+		</div>
+      </div>
+      <div class="opciones">
+
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/clienteDireccionPrime.xhtml"><button class="glow-on-hover" type="button">Clientes</button></a>
+
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/DireccionPrime.xhtml"><button class="glow-on-hover" type="button">Direccciones</button></a>
+
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/ProductoPrime.xhtml"><button class="glow-on-hover" type="button">Productos</button></a>
+
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml"><button class="glow-on-hover" type="button">Ventas</button></a>
+
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/MarcaPrime.xhtml"><button class="glow-on-hover" type="button">Marcas</button></a>
+      	
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/GananciaPrime.xhtml"><button class="glow-on-hover" type="button">Ganancias</button></a>
+
+      </div>
+    </center>
+  </ui:composition>
+</html>

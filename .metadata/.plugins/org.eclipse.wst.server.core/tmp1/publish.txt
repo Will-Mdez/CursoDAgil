@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Jun 05 13:28:39 CDT 2022
+org.eclipse.jst.j2ee.server\:PFrameworksServiciosEq2=WEB-INF/lib/PFrameworksServiciosEq2.jar
+org.eclipse.jst.j2ee.server\:ProyectoFrameworksPersistenciaEq2=WEB-INF/lib/ProyectoFrameworksPersistenciaEq2.jar

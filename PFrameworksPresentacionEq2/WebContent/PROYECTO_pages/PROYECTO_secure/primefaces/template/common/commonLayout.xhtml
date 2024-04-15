@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+>
+  <h:head>
+    <title>Portal de ventas</title>
+    <meta charset="UTF-8" />
+    <!-- css boostrap -->
+    <!--  -->
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <!-- independence: #555b6e; -->
+
+    <style type="text/css">
+      :root {
+        --independence: #ffe282;
+        --morning-blue: #89b0ae;
+        --powder-blue: #bee3db;
+        --cultured: #89b0ae;
+        --apricot: #ffd6ba;
+      }
+
+      .header-title {
+        border: 2px solid var(--independence);
+        border-radius: 5px;
+        padding: 15px;
+        opacity: 100%;
+        margin-top: 10px;
+        font-weight: bold;
+        color: var(--independence);
+        font-family: Stencil Std, fantasy;
+      }
+      .page-header {
+        background-image: url("./images/wallpaper5.jpg");
+      }
+
+      body {
+        background-color: #233b37;
+        height: 400vh;
+      }
+
+      ::-webkit-scrollbar {
+        width: 20px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--apricot);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--independence);
+      }
+      .formTabView {
+        padding: 30px;
+      }
+
+      .footer {
+        font-size: 18px;
+        color: var(--powder-blue);
+      }
+
+      .social-media {
+        display: flex;
+        align-items: rigth;
+        justify-content: center;
+      }
+
+      .social-media img {
+        width: 20px;
+        height: 20px;
+        margin-inline: 150px;
+        color: white;
+      }
+
+      .social-media p {
+        color: var(--independence);
+        text-decoration: none;
+      }
+
+      .item-header p:hover {
+        background-size: 0 3px, 100% 3px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0px 0px 5px var(--powder-blue);
+      }
+
+      .item-header p {
+        background: linear-gradient(
+            to right,
+            rgba(85, 91, 110, 1),
+            rgba(85, 91, 110, 1)
+          ),
+          linear-gradient(
+            to right,
+            rgba(255, 0, 0, 1),
+            rgba(255, 0, 180, 1),
+            rgba(0, 100, 200, 1)
+          );
+        background-size: 100% 3px, 0 3px;
+        background-position: 100% 100%, 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 400ms;
+      }
+
+      .list-group-item {
+        text-align: center;
+        background-color: #eae5be;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #eee8d0;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fffcf2;
+      }
+
+      a:where(:hover, :focus-visible) {
+        background-size: 100% var(--bg-h);
+        background-position-x: left;
+      }
+
+      a {
+        background: linear-gradient(0deg, slateblue, slateblue) no-repeat right
+          bottom / 0 var(--bg-h);
+        transition: background-size 350ms;
+        --bg-h: 100%;
+      }
+
+      .underline {
+        padding-bottom: 2px;
+        --bg-h: 2px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        line-height: 1;
+      }
+
+      .glow-on-hover {
+        width: 190px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #87e8e8;
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .glow-on-hover:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+
+      .glow-on-hover:active {
+        color: var(--independence);
+      }
+
+      .glow-on-hover:active:after {
+        background: transparent;
+      }
+
+      .glow-on-hover:hover:before {
+        opacity: 1;
+      }
+
+      .glow-on-hover:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+
+      @keyframes glowing {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+    </style>
+  </h:head>
+  <h:body>
+    <!-- header -->
+    <ui:insert name="header">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonHeader.xhtml"
+      />
+    </ui:insert>
+
+    <!-- content -->
+    <ui:insert name="content">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonContent.xhtml"
+      />
+    </ui:insert>
+    <!-- Footer -->
+    <ui:insert name="footer">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonFooter.xhtml"
+      />
+    </ui:insert>
+    <!-- jquery -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    ></script>
+
+    <!-- solucion conflicto -->
+    <h:outputScript> $jq = jQuery.noConflict(true); </h:outputScript>
+    <!-- js bootstrap -->
+    <h:outputScript library="js" name="bootstrap.min.js" />
+  </h:body>
+</html>
+
+<!-- https://coolors.co/555b6e-89b0ae-bee3db-faf9f9-ffd6ba  -->
